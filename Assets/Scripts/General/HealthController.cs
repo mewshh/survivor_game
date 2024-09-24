@@ -32,6 +32,15 @@ public class HealthController : MonoBehaviour
 
         _filler.DOFillAmount(_currentHealth / _maxHealth, 0.15f).SetEase(Ease.Linear);
 
+        if(GetComponent<Enemy>() != null)
+        {
+            _gameManager.audioManager.PlayEnemyHitAudio();
+        }
+        else
+        {
+            _gameManager.audioManager.PlayPlayerHitAudio();
+        }
+
         if (_currentHealth <= 0)
         {
             Die();
@@ -56,6 +65,8 @@ public class HealthController : MonoBehaviour
     private void Die()
     {
         GetComponent<Collider2D>().enabled = false;
+
+        _gameManager.audioManager.PlayDeathAudio();
 
         if (gameObject.GetComponent<Enemy>())
         {
@@ -84,7 +95,7 @@ public class HealthController : MonoBehaviour
 
             _gameManager.GameOver();
 
-            DOVirtual.DelayedCall(0.5f, () =>
+            DOVirtual.DelayedCall(1f, () =>
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             });

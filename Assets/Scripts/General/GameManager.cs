@@ -9,6 +9,7 @@ public class GameManager : MonoInstaller
     [Header("References")]
     public UIManager uiManager;
     public PlayerController playerController;
+    public AudioManager audioManager;
     public GameObject[] enemyPrefabs;
     public bool gameOver;
 
@@ -22,6 +23,7 @@ public class GameManager : MonoInstaller
     {
         Container.Bind<UIManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PlayerController>().FromComponentInHierarchy().AsSingle();
+        Container.Bind<AudioManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
 
         Container.Bind<GameObject[]>().WithId("EnemyPrefabs").FromInstance(enemyPrefabs).AsSingle();
@@ -46,6 +48,7 @@ public class GameManager : MonoInstaller
     {
         if (!gameOver)
         {
+            audioManager.PlayLoseAudio();
             gameOver = true;
             uiManager.ShowDarkPanel();
         }
