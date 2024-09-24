@@ -137,6 +137,14 @@ PrefabInstance:
       value: PF_Enemy_Fast_2
       objectReference: {fileID: 0}
     - target: {fileID: 2744735043006782115, guid: 688defa0e9367fc4c91018544e20a38a, type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744735043006782115, guid: 688defa0e9367fc4c91018544e20a38a, type: 3}
+      propertyPath: _speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744735043006782115, guid: 688defa0e9367fc4c91018544e20a38a, type: 3}
       propertyPath: _enemyRenderer
       value: 
       objectReference: {fileID: 4627239881108264814}

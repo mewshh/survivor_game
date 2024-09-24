@@ -49,6 +49,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b894860ef454de4a80b099fd6b000c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyRenderer: {fileID: 0}
+  speed: 3
+  damageInterval: 1
+  damageAmount: 10
+  detectionRadius: 1.5
+  stoppingDistance: 1
 --- !u!114 &1405283595015101076
 MonoBehaviour:
   m_ObjectHideFlags: 0

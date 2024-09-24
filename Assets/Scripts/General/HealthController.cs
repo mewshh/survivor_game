@@ -55,8 +55,6 @@ public class HealthController : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log($"{gameObject.name} has died.");
-
         GetComponent<Collider2D>().enabled = false;
 
         if (gameObject.GetComponent<Enemy>())
@@ -64,9 +62,18 @@ public class HealthController : MonoBehaviour
             var enemy = gameObject.GetComponent<Enemy>();
             _gameManager.SetDeathSprite(enemy.EnemySpriteRenderer);
             _gameManager.AddKill();
+            enemy.enabled = false;
             DOVirtual.DelayedCall(0.5f, () =>
             {
-                enemy.transform.DOScale(0, 0.2f).SetEase(Ease.Linear);
+                enemy.transform.DOScale(0, 0.2f).SetEase(Ease.Linear).OnComplete(() =>
+                {
+                    GetComponent<Collider2D>().enabled = true;
+                    enemy.gameObject.SetActive(false);
+                    enemy.GetComponent<Enemy>().enabled = true;
+                    enemy.transform.localScale = Vector3.one;
+                    Heal(_maxHealth);
+                    _filler.fillAmount = 1;
+                });
             });
         }
         else if (gameObject.GetComponent<PlayerController>())

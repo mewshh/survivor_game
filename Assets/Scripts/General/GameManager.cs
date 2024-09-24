@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 using Zenject;
+using Zenject.SpaceFighter;
 
 public class GameManager : MonoInstaller
 {
     [Header("References")]
     public UIManager uiManager;
     public PlayerController playerController;
-    public GameManager gameManager;
+    public GameObject[] enemyPrefabs;
+    public bool gameOver;
 
     [Header("Death")]
     public Sprite deathSprite;
@@ -22,7 +23,13 @@ public class GameManager : MonoInstaller
         Container.Bind<UIManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PlayerController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
+
+        Container.Bind<GameObject[]>().WithId("EnemyPrefabs").FromInstance(enemyPrefabs).AsSingle();
+
+        Container.Bind<EnemyPool>().AsSingle().WithArguments(enemyPrefabs, 10);
+        Container.Bind<EnemySpawner>().FromComponentInHierarchy().AsSingle();
     }
+
 
     public void SetDeathSprite(SpriteRenderer spriteRenderer)
     {
@@ -37,6 +44,10 @@ public class GameManager : MonoInstaller
 
     public void GameOver()
     {
-        uiManager.ShowDarkPanel();
+        if (!gameOver)
+        {
+            gameOver = true;
+            uiManager.ShowDarkPanel();
+        }
     }
 }

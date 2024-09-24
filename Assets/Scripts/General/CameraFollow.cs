@@ -10,9 +10,9 @@ public class CameraFollow : MonoBehaviour
     private PlayerController _player;
 
     [Inject]
-    public void Construct(PlayerController uiManager)
+    public void Construct(PlayerController playerController)
     {
-        _player = uiManager;
+        _player = playerController;
     }
 
     void LateUpdate()

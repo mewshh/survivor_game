@@ -27,7 +27,6 @@ public class PlayerShooting : MonoBehaviour
 
         if (hits.Length == 0)
         {
-            Debug.Log("No enemies detected.");
             _weaponTransform.localEulerAngles = Vector3.zero;
             return;
         }
