@@ -62,7 +62,8 @@ public class HealthController : MonoBehaviour
         if (gameObject.GetComponent<Enemy>())
         {
             var enemy = gameObject.GetComponent<Enemy>();
-            enemy.ChangeSprite(_gameManager.deathSprite);
+            _gameManager.SetDeathSprite(enemy.EnemySpriteRenderer);
+            _gameManager.AddKill();
             DOVirtual.DelayedCall(0.5f, () =>
             {
                 enemy.transform.DOScale(0, 0.2f).SetEase(Ease.Linear);
@@ -70,7 +71,16 @@ public class HealthController : MonoBehaviour
         }
         else if (gameObject.GetComponent<PlayerController>())
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            var player = gameObject.GetComponent<PlayerController>();
+            player.Animator.enabled = false;
+            _gameManager.SetDeathSprite(player.PlayerSpriteRenderer);
+
+            _gameManager.GameOver();
+
+            DOVirtual.DelayedCall(0.5f, () =>
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            });
         }
     }
 }

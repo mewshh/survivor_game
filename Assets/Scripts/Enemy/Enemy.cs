@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _enemyRenderer;
 
-    public SpriteRenderer EnemySprite => _enemyRenderer;
+    public SpriteRenderer EnemySpriteRenderer => _enemyRenderer;
 
     public void ChangeSprite(Sprite sprite)
     {

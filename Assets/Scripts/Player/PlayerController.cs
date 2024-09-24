@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _movementSpeed = 5f;
     [SerializeField] private Transform _playerVisual;
     [SerializeField] private Animator _animator;
+    [SerializeField] private SpriteRenderer _playerRenderer;
+
+    public SpriteRenderer PlayerSpriteRenderer => _playerRenderer;
+    public Animator Animator => _animator;
     private UIManager _uiManager;
 
     private static string RUNNING_ANIMATION = "Running";

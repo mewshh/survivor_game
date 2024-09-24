@@ -14,10 +14,29 @@ public class GameManager : MonoInstaller
     [Header("Death")]
     public Sprite deathSprite;
 
+    [Header("Kills")]
+    public int killCounter;
+
     public override void InstallBindings()
     {
         Container.Bind<UIManager>().FromComponentInHierarchy().AsSingle();
         Container.Bind<PlayerController>().FromComponentInHierarchy().AsSingle();
         Container.Bind<GameManager>().FromComponentInHierarchy().AsSingle();
+    }
+
+    public void SetDeathSprite(SpriteRenderer spriteRenderer)
+    {
+        spriteRenderer.sprite = deathSprite;
+    }
+
+    public void AddKill()
+    {
+        killCounter++;
+        uiManager.UpdateKillCounterText(killCounter);
+    }
+
+    public void GameOver()
+    {
+        uiManager.ShowDarkPanel();
     }
 }
