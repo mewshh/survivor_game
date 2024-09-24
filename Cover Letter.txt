@@ -1,0 +1,5 @@
+I appreciate the opportunity to include insights into my test assignment. I found the project straightforward, largely due to the clear documentation provided, which guided my decisions throughout. I ensured that all usable variables were easily accessible for convenient editing, promoting flexibility in future modifications.
+
+The primary challenge I encountered was familiarizing myself with the Zenject framework, which I had not used before. However, I dedicated some time to learn it, and I was able to implement it effectively, even if my implementation might not represent the most polished usage of Zenject.
+
+Overall, I enjoyed working on this assignment and hope my approach aligns with your expectations. Thank you for your consideration.
