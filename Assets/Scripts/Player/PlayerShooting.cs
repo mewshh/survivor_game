@@ -23,9 +23,12 @@ public class PlayerShooting : MonoBehaviour
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, _circleCastRadius, transform.right, _circleCastRange, _enemyLayerMask);
 
+
+
         if (hits.Length == 0)
         {
             Debug.Log("No enemies detected.");
+            _weaponTransform.localEulerAngles = Vector3.zero;
             return;
         }
 

@@ -4,5 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private SpriteRenderer _enemyRenderer;
 
+    public SpriteRenderer EnemySprite => _enemyRenderer;
+
+    public void ChangeSprite(Sprite sprite)
+    {
+        _enemyRenderer.sprite = sprite;
+    }
 }
